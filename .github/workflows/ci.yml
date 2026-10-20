@@ -23,7 +23,7 @@ jobs:
       - run: npm run build
       - run: npm audit --omit=dev --audit-level=high
       - run: node scripts/package-release.mjs
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: flipbook-node-${{ matrix.node }}
           path: release/
