@@ -18,6 +18,7 @@ out.mkdir(parents=True, exist_ok=True)
 version = json.loads((root / 'package.json').read_text())['version']
 errors = []
 analytics = []
+clarity_responses = []
 collection_requests = []
 expect.set_options(timeout=20000)
 with sync_playwright() as p:
@@ -25,6 +26,7 @@ with sync_playwright() as p:
     context = browser.new_context(reduced_motion='reduce', permissions=['clipboard-read', 'clipboard-write'])
     page = context.new_page()
     page.on('response', lambda r: analytics.append({'url': r.url, 'status': r.status}) if ('google-analytics.com/g/collect' in r.url or 'googletagmanager.com/gtag/js' in r.url) else None)
+    page.on('response', lambda r: clarity_responses.append(r.status) if r.url.startswith('https://www.clarity.ms/tag/z0u0h01nl0') else None)
     page.on('request', lambda r: collection_requests.append(r.url) if 'google-analytics.com/g/collect' in r.url else None)
     page.on('pageerror', lambda e: errors.append(str(e)))
     page.on('console', lambda m: errors.append(m.text) if m.type == 'error' else None)
@@ -101,6 +103,14 @@ with sync_playwright() as p:
         page.goto(shared, wait_until='networkidle')
         expect(page.get_by_label('Page number', exact=True)).to_have_value('4')
         page.wait_for_function("document.querySelectorAll('img[data-page][src]').length > 1")
+        expect(page.get_by_role('region', name='Magazine reader')).to_have_attribute('data-clarity-mask', 'true')
+        expect(page.locator('.publication strong')).to_have_attribute('data-clarity-mask', 'true')
+        page.get_by_role('button', name='Notes', exact=True).click()
+        expect(page.get_by_label('notes panel', exact=True)).to_have_attribute('data-clarity-mask', 'true')
+        page.get_by_role('button', name='Close panel', exact=True).click()
+        page.get_by_role('button', name='Zoom', exact=True).click()
+        expect(page.get_by_role('dialog', name='Zoomed reading view')).to_have_attribute('data-clarity-mask', 'true')
+        page.get_by_role('button', name='Close zoom', exact=True).click()
         page.screenshot(path=str(out / f'{width}-reader.png'))
     page.wait_for_function("window.google_tag_manager && window.google_tag_manager['G-5G040P491R']")
     assert any('googletagmanager.com/gtag/js?id=G-5G040P491R' in r['url'] and r['status'] == 200 for r in analytics), analytics
@@ -110,7 +120,8 @@ with sync_playwright() as p:
     assert initial.get('dl') == [base + '/'], initial.get('dl')
     worker = page.locator('script[type=module]').first.get_attribute('src')
     assert context.request.get(base + worker).headers['content-type'].startswith('application/javascript')
+    assert clarity_responses and all(status == 200 for status in clarity_responses), clarity_responses
     assert not errors, errors
     browser.close()
-(out / 'results.json').write_text(json.dumps({'base': base, 'version': version, 'widths': [390, 1440], 'localUpload': True, 'urlLoading': True, 'pageTurns': True, 'downloadChecksum': True, 'sharedPageLink': True, 'squareControls': True, 'consoleErrors': errors, 'analyticsProperty': 'G-5G040P491R', 'analyticsInitialPageviewDispatched': True}, indent=2) + '\n')
+(out / 'results.json').write_text(json.dumps({'base': base, 'version': version, 'widths': [390, 1440], 'localUpload': True, 'urlLoading': True, 'pageTurns': True, 'downloadChecksum': True, 'sharedPageLink': True, 'squareControls': True, 'consoleErrors': errors, 'analyticsProperty': 'G-5G040P491R', 'analyticsInitialPageviewDispatched': True, 'clarityTag': 'z0u0h01nl0', 'clarityTagStatuses': clarity_responses, 'readerAndNotesMasked': True}, indent=2) + '\n')
 print('PASS: production version, PDF assets, local/URL opening, page turns, downloads, sharing, themes and square controls at 390/1440px; zero browser errors.')

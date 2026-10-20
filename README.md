@@ -16,7 +16,7 @@ An open source product by [Vriksh Apps](https://vriksh.ca/?utm_source=flipbook&u
 
 [Open Flipbook](https://flipbook.vriksh.ca) · [Download](https://github.com/Pragith/flipbook/releases) · [Getting started](#getting-started) · [Features](#features) · [Deployment](docs/DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
 
-> **Status:** The hosted app is v0.2.1, an early 0.x release. It is a standalone viewer; accounts, document hosting and cloud annotation sync are outside this release. See [limitations](#limitations).
+> **Status:** The hosted app is v0.3.0, an early 0.x release. It is a standalone viewer; accounts, document hosting and cloud annotation sync are outside this release. See [limitations](#limitations).
 
 ## Features
 
@@ -168,3 +168,5 @@ Versions follow **Semantic Versioning**. `0.x` signals an evolving interface and
 ## Analytics
 
 The hosted app uses Google Analytics (`G-5G040P491R`) for usage measurement. Initial pageview metadata excludes the query string containing PDF URLs. Local PDF files, document text, notes and bookmarks are not sent to Analytics by the app.
+
+Microsoft Clarity (`z0u0h01nl0`) provides usage insights. Document titles, reader pages, notes panels and zoomed content are explicitly masked from Clarity recordings.

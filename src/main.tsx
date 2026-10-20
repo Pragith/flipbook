@@ -795,7 +795,7 @@ function App() {
           <img src={`${import.meta.env.BASE_URL}brand/logo.svg`} alt="" />
         </button>
         <div className="publication">
-          <strong>{title}</strong>
+          <strong data-clarity-mask="true">{title}</strong>
         </div>
         <form
           className="header-pages"
@@ -861,7 +861,7 @@ function App() {
         </div>
         <div className={`workspace ${panel ? "with-panel" : ""}`}>
           {panel && (
-            <aside aria-label={`${panel} panel`}>
+            <aside aria-label={`${panel} panel`} data-clarity-mask="true">
               <div className="panel-head">
                 <div>
                   <span className="eyebrow">EXPLORE THE EDITION</span>
@@ -1064,7 +1064,7 @@ function App() {
               )}
             </aside>
           )}
-          <section className="reader" aria-label="Magazine reader">
+          <section className="reader" aria-label="Magazine reader" data-clarity-mask="true">
             <div className="stage" ref={stage}>
               {!doc ? (
                 <div className="loading-card">
@@ -1240,6 +1240,7 @@ function App() {
       {zoom && (
         <div
           className="zoom-overlay"
+          data-clarity-mask="true"
           role="dialog"
           aria-modal="true"
           aria-label="Zoomed reading view"
