@@ -2,7 +2,7 @@
 
 ## Supported version
 
-Security fixes target the latest 0.x release and `main`. Older prereleases are not maintained independently.
+Security fixes target the latest 0.x release and `main`. Older releases are not maintained independently.
 
 ## Report a vulnerability
 

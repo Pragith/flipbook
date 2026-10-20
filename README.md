@@ -16,7 +16,7 @@ An open source product by [Vriksh Apps](https://vriksh.ca/?utm_source=flipbook&u
 
 [Download](https://github.com/Pragith/flipbook/releases) · [Getting started](#getting-started) · [Features](#features) · [Deployment](docs/DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
 
-> **Status:** v0.1.0 is an early 0.x prerelease. It is a standalone viewer; accounts, document hosting and cloud annotation sync are outside this release. See [limitations](#limitations).
+> **Status:** v0.1.0 is an early 0.x release. It is a standalone viewer; accounts, document hosting and cloud annotation sync are outside this release. See [limitations](#limitations).
 
 ## Features
 

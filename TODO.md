@@ -1,6 +1,6 @@
 # TODO
 
-The GitHub prerelease is published. The main gaps before a broad launch are data durability, broader testing and public hosting.
+The GitHub release is published. The main gaps before a broad launch are data durability, broader testing and public hosting.
 
 ## Launch priorities
 

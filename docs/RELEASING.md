@@ -1,6 +1,6 @@
 # Releasing
 
-Releases use Semantic Versioning. The first release is `0.1.0`; all 0.x builds are marked prerelease while the interface and behavior evolve.
+Releases use Semantic Versioning. The first release is `0.1.0`; 0.x releases indicate that the interface and behavior are still evolving. Tags with a suffix such as `-beta.1` are marked as prereleases.
 
 1. Update `package.json` and `package-lock.json` to the intended version.
 2. Add a dated changelog entry and `docs/releases/vX.Y.Z.md` with behavior, compatibility and verification notes.
@@ -9,7 +9,7 @@ Releases use Semantic Versioning. The first release is `0.1.0`; all 0.x builds a
 5. Inspect the app, logo, favicon, welcome screen, file/URL opening and core reader interactions. Do not claim unrun browser or device checks.
 6. Confirm that private test PDFs are absent from Git and the release ZIP.
 7. Commit and push `main`; wait for CI. Tag that verified commit (`git tag -a vX.Y.Z -m 'flipbook vX.Y.Z'`) and push the tag.
-8. The tag-triggered Release workflow checks the version, tests/builds, creates `flipbook-vX.Y.Z-web.zip` and `SHA256SUMS.txt`, then publishes the GitHub prerelease. GitHub supplies source archives.
+8. The tag-triggered Release workflow checks the version, tests/builds, creates `flipbook-vX.Y.Z-web.zip` and `SHA256SUMS.txt`, then publishes the GitHub release. GitHub supplies source archives.
 9. Read the published release and download its assets. Verify the checksum and confirm that the tag, commit and package version agree.
 
 The ZIP includes the compiled app, original sample PDF, MIT license, README, third-party notices and dependency license texts. It must be served over HTTP(S). `scripts/package-release.mjs` refuses to package a build whose PDF differs from the original `assets/sample.pdf`.
