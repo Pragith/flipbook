@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ArrowRight, Link, Upload } from "lucide-react";
+import { ArrowRight, Github, Link, Upload } from "lucide-react";
 import { ThemeMenu, type ThemeName } from "./ThemeMenu";
 import { ProductCredit } from "./ProductCredit";
 import { parsePdfUrl } from "./pdf-source";
@@ -37,11 +37,12 @@ export function Welcome({ onFile, onUrl, theme, onThemeChange }: Props) {
           flipbook
         </a>
         <a
+          className="github-button"
           href="https://github.com/Pragith/flipbook"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Open source <ArrowRight size={13} />
+          <Github size={16} aria-hidden="true" /> GitHub
         </a>
       </nav>
       <main className="welcome-content">
