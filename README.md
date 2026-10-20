@@ -147,6 +147,8 @@ See [deployment details](docs/DEPLOYMENT.md), [release procedure](docs/RELEASING
 
 ## Roadmap
 
+See [TODO.md](TODO.md) for the prioritized launch checklist and remaining features.
+
 - Broader mobile, touch and assistive-technology coverage
 - Better rendering/cache limits for large publications
 - Mixed-size pages, internal PDF links and password entry
