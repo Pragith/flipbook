@@ -16,7 +16,7 @@ An open source product by [Vriksh Apps](https://vriksh.ca/?utm_source=flipbook&u
 
 [Download](https://github.com/Pragith/flipbook/releases) · [Getting started](#getting-started) · [Features](#features) · [Deployment](docs/DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
 
-> **Status:** v0.1.0 is an early 0.x prerelease. It is a standalone viewer; accounts, document hosting and cloud annotation sync are outside this release. See [verification and limitations](#verification-and-limitations).
+> **Status:** v0.1.0 is an early 0.x prerelease. It is a standalone viewer; accounts, document hosting and cloud annotation sync are outside this release. See [limitations](#limitations).
 
 ## Features
 
@@ -139,25 +139,11 @@ VITE_BASE_PATH=/flipbook/ npm run build
 
 See [deployment details](docs/DEPLOYMENT.md), [release procedure](docs/RELEASING.md) and [security policy](SECURITY.md). The web manifest supplies icons and display metadata; this release does not include a service worker or promise offline installation.
 
-## Verification and limitations
+## Limitations
 
-Verified during development in desktop Microsoft Edge:
-
-- A private 68-page PDF rendered; page turns, normal-view text selection and zoom worked.
-- Search for a known term returned the expected three matching sheets and navigated correctly.
-- Stack hover changed the destination across the thickness; clicking 54 opened 54–55.
-- Paired thumbnail navigation, active outlines and the compact controls were exercised.
-- The supplied Internet Archive URL loaded as a 124-page PDF, including a rendered cover and direct refresh of its hosted URL.
-- The welcome form, custom favicon and UTM-tagged Vriksh Apps footer were checked in the browser.
-- A bookmark survived a production-build reload, and note creation was checked. The full browser reopen/switch-document persistence flow remains a manual release check; automated storage tests pass.
-- Appearance controls provide Sage, White and Dark; additional device coverage remains a manual follow-up.
-- The browser reported audio playback during page turns. Audio fidelity was not assessed through the automation tools.
-
-Automated checks cover stack boundaries, monotonic mapping, cover/back-cover handling, odd/even spread grouping and safe URL handling. Storage tests cover fingerprint isolation, reopening, corrupted JSON, malformed records, invalid pages and failed writes. CI builds and tests on Node 22 and 24. The release packager checks that the bundled PDF is byte-for-byte the original sample.
-
-**Known limits:** scanned PDFs require OCR for search/selection; encrypted PDFs have no password-entry UI; mixed-size documents use the first sheet's page geometry; large or image-heavy files can consume substantial memory. External PDF links are supported in zoom. Internal PDF destinations, form filling, annotation export, collaborative notes, OCR and a publishing backend are not implemented. Physical touch, mobile browser coverage and screen-reader behavior require broader testing; no WCAG conformance claim is made. Print opens the original in the browser PDF viewer, where the browser handles printing.
-
-This is an independent implementation, inspired by physical magazines and established flipbook readers. It is not affiliated with FlippingBook and does not claim pixel-identical rendering or behavior.
+- Scanned PDFs need OCR for text selection and search.
+- Password-protected PDFs, internal PDF links and mixed page sizes are not yet supported.
+- Large, image-heavy PDFs may use substantial memory.
 
 ## Roadmap
 
