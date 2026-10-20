@@ -2,6 +2,29 @@
 
 All notable changes are recorded here. Versions follow [Semantic Versioning](https://semver.org/).
 
+## [0.2.1] - 2026-10-20
+
+### Fixed
+
+- Make the homepage source link an explicit, keyboard-accessible GitHub button.
+- Keep public deployment documentation and Compose configuration portable.
+
+## [0.2.0] - 2026-10-20
+
+### Added
+
+- Public app at https://flipbook.vriksh.ca and portable Docker Compose self-hosting with unprivileged Nginx.
+- Google Analytics property `G-5G040P491R`; initial pageview metadata excludes PDF URL query parameters. Add a regression test for that boundary.
+- Manifest-derived visible version and generated `/version.json` for deployment verification.
+- Self-hosting documentation and repeatable browser verification.
+
+### Fixed
+
+- Serve PDF.js module workers with the correct JavaScript MIME type and retain real 404s for missing assets.
+- Start backward page turns inside the actual page bounds, including centred portrait pages on phones.
+- Use square corners for controls and panels while preserving logo and document artwork.
+- Split PDF.js into its own application chunk to keep production builds free of chunk-size warnings.
+
 ## [0.1.0] - 2026-10-20
 
 ### Added

@@ -9,3 +9,6 @@ public/wasm/
 public/book.pdf
 src/generated/
 release/
+.secrets/
+.env
+public/version.json

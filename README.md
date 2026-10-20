@@ -14,9 +14,9 @@
 
 An open source product by [Vriksh Apps](https://vriksh.ca/?utm_source=flipbook&utm_medium=referral&utm_campaign=github_readme).
 
-[Download](https://github.com/Pragith/flipbook/releases) · [Getting started](#getting-started) · [Features](#features) · [Deployment](docs/DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
+[Open Flipbook](https://flipbook.vriksh.ca) · [Download](https://github.com/Pragith/flipbook/releases) · [Getting started](#getting-started) · [Features](#features) · [Deployment](docs/DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
 
-> **Status:** v0.1.0 is an early 0.x release. It is a standalone viewer; accounts, document hosting and cloud annotation sync are outside this release. See [limitations](#limitations).
+> **Status:** The hosted app is v0.2.1, an early 0.x release. It is a standalone viewer; accounts, document hosting and cloud annotation sync are outside this release. See [limitations](#limitations).
 
 ## Features
 
@@ -164,3 +164,7 @@ Bug reports, reproducible examples, accessibility feedback and pull requests are
 Versions follow **Semantic Versioning**. `0.x` signals an evolving interface and behavior; each release has a changelog entry and matching Git tag. See [CHANGELOG.md](CHANGELOG.md).
 
 **MIT © 2026 Pragith Prakash and flipbook contributors.** See [LICENSE](LICENSE). The original source, logo and sample PDF use that license. Third-party components retain their own licenses; copies ship in the release archive.
+
+## Analytics
+
+The hosted app uses Google Analytics (`G-5G040P491R`) for usage measurement. Initial pageview metadata excludes the query string containing PDF URLs. Local PDF files, document text, notes and bookmarks are not sent to Analytics by the app.

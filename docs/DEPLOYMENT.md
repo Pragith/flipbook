@@ -32,3 +32,18 @@ For shared reader links, preserve `?pdf=<encoded-url>&page=<number>`. Anyone fol
 Long-cache hashed assets under `assets/`, but let browsers revalidate `index.html` and `book.pdf` on releases. Use HTTPS and consider `X-Content-Type-Options: nosniff`, an appropriate referrer policy and framing policy. A custom CSP must allow the local worker, Blob-backed local documents, needed remote PDF origins, Canvas/WASM rendering and PDF.js's style layers; validate it with real documents before enforcing it.
 
 The manifest provides app metadata and icons. There is no service worker or guaranteed offline mode.
+
+## Docker Compose
+
+To build and run a local production server:
+
+```sh
+docker compose up -d --build
+curl --fail http://localhost:8080/healthz
+```
+
+Open http://localhost:8080. Set `FLIPBOOK_PORT` to choose a different host port. The container runs Nginx without root privileges and serves the compiled app from a read-only filesystem. Use your own HTTPS reverse proxy to expose it publicly.
+
+The build generates `/version.json` from `package.json` and displays the same version in the app credit. Nginx serves PDF.js `.mjs` workers as JavaScript; missing assets return 404.
+
+For browser verification, install Playwright for Python and Chromium, then run `python3 scripts/verify-deployment.py --base-url YOUR_HTTPS_URL`. Evidence is written under ignored `output/deployment/`.
