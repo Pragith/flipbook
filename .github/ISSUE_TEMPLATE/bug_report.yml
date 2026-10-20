@@ -1,0 +1,27 @@
+name: Bug report
+description: Report a reproducible viewer problem
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include expected and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Use the original sample or an openly licensed minimal PDF. Never share private documents or signed URLs.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Version, browser and operating system
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or relevant console errors

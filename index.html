@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f4f0" />
+    <script>
+      try {
+        const theme = JSON.parse(
+          localStorage.getItem("flipbook-theme") || '"sage"',
+        );
+        if (["sage", "white", "dark"].includes(theme))
+          document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <link rel="alternate icon" href="%BASE_URL%favicon.ico" />
+    <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
+    <link rel="manifest" href="%BASE_URL%manifest.webmanifest" />
+    <meta property="og:title" content="flipbook" />
+    <meta
+      property="og:description"
+      content="Your PDFs. A little more alive. An open source magazine reader."
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/Pragith/flipbook/main/public/brand/social-card.png"
+    />
+    <title>flipbook — PDF & magazine viewer</title>
+    <meta
+      name="description"
+      content="An immersive magazine reader with lifelike page turns, search, notes and bookmarks."
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+output/
+.DS_Store
+public/cmaps/
+public/standard_fonts/
+public/wasm/
+*.tsbuildinfo
+public/book.pdf
+src/generated/
+release/
