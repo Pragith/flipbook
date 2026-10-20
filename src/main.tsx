@@ -508,7 +508,16 @@ function App() {
     [count],
   );
   const next = useCallback(() => flip.current?.flipNext(), []),
-    prev = useCallback(() => flip.current?.flipPrev(), []);
+    prev = useCallback(() => {
+      const engine = flip.current;
+      if (!engine) return;
+      const bounds = engine.getBoundsRect();
+      // The library's flipPrev uses x=10, outside a centred portrait page.
+      engine.getFlipController().flip({
+        x: bounds.left + 10,
+        y: bounds.top + 1,
+      });
+    }, []);
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
       if (

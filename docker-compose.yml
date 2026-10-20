@@ -1,0 +1,37 @@
+name: flipbook
+services:
+  web:
+    build: .
+    image: flipbook:0.2.0
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4781:8080"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token-file /run/secrets/cloudflare_tunnel_token
+    secrets:
+      - cloudflare_tunnel_token
+    depends_on:
+      web:
+        condition: service_healthy
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+secrets:
+  cloudflare_tunnel_token:
+    file: ./.secrets/cloudflare-tunnel-token
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 10.169.0.0/28
