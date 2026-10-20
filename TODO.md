@@ -31,3 +31,8 @@ Uploaded PDFs are not retained after refresh. Users must reopen the file; its sa
 - [x] Add usage analytics and visible product version metadata.
 - [x] Provide a prominent GitHub link on the homepage.
 - [x] Verify local/URL PDF reading and deployed browser behavior.
+
+## 0.3.0
+
+- [x] Add Microsoft Clarity and mask document/notes content.
+- [x] Verify the public Clarity tag returns HTTP 200 and reader/title/notes/zoom masks are present at 390/1440 pixels, with no console errors or page exceptions.

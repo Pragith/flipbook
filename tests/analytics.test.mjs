@@ -19,3 +19,21 @@ test('Analytics initializes the requested property without leaking PDF query met
   assert.equal(config[2].page_title, 'flipbook');
   assert.doesNotMatch(JSON.stringify(context.dataLayer), /private|secret|token=|page=4/);
 });
+
+test('Clarity bootstraps only its assigned project and queues calls until loaded', async () => {
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const source = [...html.matchAll(/<script type="text\/javascript">([\s\S]*?)<\/script>/g)][0]?.[1];
+  assert.ok(source);
+  const inserted = [];
+  const first = { parentNode: { insertBefore: node => inserted.push(node) } };
+  const context = {
+    document: { createElement: tag => ({ tag }), getElementsByTagName: () => [first] },
+  };
+  context.window = context;
+  vm.runInNewContext(source, context);
+  assert.equal(inserted.length, 1);
+  assert.equal(inserted[0].src, 'https://www.clarity.ms/tag/z0u0h01nl0');
+  assert.equal(inserted[0].async, 1);
+  context.clarity('event', 'test');
+  assert.deepEqual(Array.from(context.clarity.q[0]), ['event', 'test']);
+});

@@ -2,6 +2,13 @@
 
 All notable changes are recorded here. Versions follow [Semantic Versioning](https://semver.org/).
 
+## [0.3.0] - 2026-10-20
+
+### Added
+
+- Microsoft Clarity usage analytics with project `z0u0h01nl0`.
+- Explicit recording masks for document titles, pages, notes panels and zoomed content.
+
 ## [0.2.1] - 2026-10-20
 
 ### Fixed

@@ -2,7 +2,7 @@ name: flipbook
 services:
   web:
     build: .
-    image: flipbook:0.2.1
+    image: flipbook:0.3.0
     restart: unless-stopped
     ports:
       - "127.0.0.1:${FLIPBOOK_PORT:-8080}:8080"
